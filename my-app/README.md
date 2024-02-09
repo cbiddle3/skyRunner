@@ -9,6 +9,8 @@ In the project directory, you can run:
 ### When building for the first time you must run: 
 ### `npm build`
 
+Installs the dependnecies of the project. This script needs to be run once before you can run the application. It should not need to be run on subsequent occasions. 
+
 ### `npm start`
 
 Runs the app in the development mode.\
