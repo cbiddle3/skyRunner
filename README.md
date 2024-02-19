@@ -16,6 +16,7 @@ sequenceDiagram
    Interpreter-->>BuildingAI: 
    ScoreKeeper-->>GUI: 
    BuildingAI-->>GUI:
+
 ```
 
 ```mermaid
