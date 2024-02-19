@@ -37,7 +37,7 @@ classDiagram
     class EndScreen {
         
     }
-
+```
     Game --> TitleScreen
     Game --> PlayingScreen 
     Game --> EndScreen
