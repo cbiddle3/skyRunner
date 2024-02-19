@@ -44,4 +44,13 @@ classDiagram
     Game --> EndScreen
 ```
 
+```mermaid
+graph 
+    A[Start] --> B[User Selects Start]-->C[Game Begins] -- User Jumps -->D{Is game over?} -- No --> E[Generate Building Pattern]-->F[Display Background + Buildings]
+    
+   F-->D
+   G[Display End Screen and Character Score]
+   D-- Yes --> G
+```
+
 More information can be found on the README.md file under the sky-runner directory.
