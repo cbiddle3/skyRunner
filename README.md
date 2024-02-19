@@ -11,7 +11,7 @@
 
 ```mermaid
 sequenceDiagram
-   GUI->>Interpreter: Translates front-end to back-end
+   GUI-->>Interpreter: Translates front-end to back-end
    Interpreter-->>ScoreKeeper:
    Interpreter-->>BuildingAI:
    ScoreKeeper-->>GUI:
