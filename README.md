@@ -1,6 +1,8 @@
 # skyRunner platform game
 
-Brief Description: You are a character that is running on top of buildings in the city. The object of the game is to get as far as you can while jumping over the cracks/spaces between the buildings.
+Brief Description: You are a character that is running on top of buildings in the city. The object of the game is to get as far as you can while jumping over the cracks/spaces between the buildings. In order to jump you must press the space key. If you fall in the crack of the buildings the game is over and displays your achieved distance.
+
+Currently the html files are seperate for each component (index.html, startButton.html, and titleCard.html), however, that will be changed soon.
 
 ## You can run the code the following two ways:
 
@@ -50,7 +52,7 @@ classDiagram
     Game --> EndScreen
 ```
 
-This gives an overall view of the different components and how they will be organized for the game interface.
+This gives an overall view of the different components and how they will be organized for the game interface. There is a top level game container that has the three different screen displays depending on the state of the game (title, game, end screen).
 
 #### Sequence Diagram 
 
@@ -75,4 +77,4 @@ graph
    D-- Yes --> G
 ```
 
-This shows how the user actions and game logic will fundamentally interact.
+This shows how the user actions and game logic will fundamentally interact. The user clicks start on the title page and then the game continues until the user dies. The game updates with randomized buildings and gap distances between buildings.
