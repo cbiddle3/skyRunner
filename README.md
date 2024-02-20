@@ -4,22 +4,22 @@
 
 ## One:
 
-### Install the visual studio code "open in browser" extension 
+### A. Install the visual studio code "open in browser" extension 
 <img width="678" alt="Screenshot 2024-02-19 at 9 59 42 PM" src="https://github.com/cbiddle3/skyRunner/assets/123024485/cf35a4fe-eb0b-4878-8960-52cc457ae000">
 
-### Navigate to <placeHolder.html>
+### B. Navigate to <placeHolder.html>
 
-### Have a supported browser open
+### C. Have a supported browser open
 
-### Press `⌘k w` to open it on your browser
+### D. Press `⌘k w` to open it on your browser
 
 ## Two:
 
-### Go to your Finder/File Explorer
+### A. Go to your Finder/File Explorer
 
-### Navigate to the skyRunner repository you cloned
+### B. Navigate to the skyRunner repository you cloned
 
-### Select the <placeHolder>.html file and it will open in your browser
+### C. Select the <placeHolder>.html file and it will open in your browser
 
 ```mermaid
 sequenceDiagram
