@@ -1,13 +1,25 @@
 # skyRunner
 
-## Step One: Please go to the sky-runner directory
-### `cd sky-runner`
+## You can run the code the following two ways:
 
-## Step Two: If it is your first time building the application please run the following command.
-### `npm install`
+## One:
 
-## Step Three: To open the webpage please run the following command.
-### `npm start`
+### Install the visual studio code "open in browser" extension 
+<img width="678" alt="Screenshot 2024-02-19 at 9 59 42 PM" src="https://github.com/cbiddle3/skyRunner/assets/123024485/cf35a4fe-eb0b-4878-8960-52cc457ae000">
+
+### Navigate to <placeHolder.html>
+
+### Have a supported browser open
+
+### Press `⌘k w` to open it on your browser
+
+## Two:
+
+### Go to your Finder/File Explorer
+
+### Navigate to the skyRunner repository you cloned
+
+### Select the <placeHolder>.html file and it will open in your browser
 
 ```mermaid
 sequenceDiagram
