@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>skyRunner</title>
+        <link rel="stylesheet" href="titleCard.css">
+        <link rel="stylesheet" href="startButton.css">
+        <link rel="stylesheet" href="gameScreenStyle.css">
+    </head>
+    <body>
+        <div class="screen" id="titleScreen">
+            <img id="backgroundImage" src="images/skyRunner_logo_background.png"/>
+            <div class = "button-container">
+                <button class="startButton" onclick="showGameScreen()">Start Game</button>
+            </div>
+        </div>
+        <div class="screen" id="gameScreen">
+            <canvas id = "canvas1"> </canvas>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="globalFunctions.js"></script>
+        <script src="backGroundLogic.js"></script>
+    </body>
+</html>

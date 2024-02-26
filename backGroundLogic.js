@@ -6,7 +6,7 @@ const CANVAS_HEIGHT = canvas.height = 210;
 let gameSpeed = 5;
 
 const backgroundLayer = new Image();
-backgroundLayer.src = 'background.png';
+backgroundLayer.src = 'images/background.png';
 
 class Layer{
     constructor(image, speedModifier){

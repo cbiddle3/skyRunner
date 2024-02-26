@@ -1,7 +1,14 @@
 body {
     background: black;
 }
-#container {
+#titleScreen {
+    display: block;
+}
+
+#gameScreen {
+    display: none;
+}
+#gameScreen {
     position:absolute;
     width: 800px;
     transform: translate(-50%, -50%);
