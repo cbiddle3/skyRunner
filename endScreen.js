@@ -1,5 +1,3 @@
-const gameOverButton = document.getElementById('gameOverButton');
-
 function drawGameOverText(){
     const gameOverCanvas = document.getElementById('gameOverCanvas');
     const ctx = gameOverCanvas.getContext('2d');
@@ -12,7 +10,4 @@ function drawGameOverText(){
 
 }
 
-gameOverButton.addEventListener('click', function() {
-    showGameOverScreen();
-    drawGameOverText(); 
-})
+drawGameOverText();

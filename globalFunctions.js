@@ -6,5 +6,4 @@ function showGameScreen() {
 function showGameOverScreen() {
   $(".screen").hide();
   $("#endScreen").show();
-  drawGameOverText();
 }
