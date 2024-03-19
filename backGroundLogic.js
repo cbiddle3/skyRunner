@@ -38,6 +38,13 @@ const gameObjects = [layer1];
 
 //new code
 
+//jumping event listener 
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') { //check if the pressed key is the space bar
+        character.jump(); //call the jump method of character
+    }
+});
+
 class Character{
     constructor(image){
         this.x = CANVAS_WIDTH/2;
@@ -47,11 +54,33 @@ class Character{
         //this.width = image.width;
         //this.height = image.height;
         this.image = image;
+
+        //jumping stuff
+        this.jumpHeight = 50; 
+        this.isJumping = false; 
+        this.jumpSpeed = 10; 
+        this.jumpStartY = this.y //base position before he jumps
     }
 
     update() {
-        this.x += gameSpeed-5; // characters x position based on game speed, need to change to beginning of frame
+        if (this.isJumping) {
+            this.y -= this.jumpSpeed;
+            //something here is off, wont come back down 
+            if (this.y <= this.jumpStartY - this.jumpHeight) {
+                this.isJumping = false; //stop
+            }
+        } else {
+            this.x += gameSpeed - 5;
+        }
     }
+
+    jump() {
+        if (!this.isJumping) {
+            this.isJumping = true;
+            this.jumpStartY = this.y;
+        }
+    }
+
     draw(){
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
@@ -71,7 +100,7 @@ characterImage.onerror = function() {
 }
 
 characterImage.src = 'images/skyRunnerCharacter.png'; 
-//
+
 
 function animate(){
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
