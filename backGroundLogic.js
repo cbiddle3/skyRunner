@@ -42,8 +42,8 @@ class Character{
     constructor(image){
         this.x = CANVAS_WIDTH/2;
         this.y = CANVAS_HEIGHT/2;
-        this.width = 100;
-        this.height = 100;
+        this.width = 100; //change height later
+        this.height = 100; //change height later
         //this.width = image.width;
         //this.height = image.height;
         this.image = image;
@@ -63,14 +63,14 @@ const character = new Character(characterImage);
 characterImage.onload = function() {
     character.image = characterImage;
     gameObjects.push(character);
-    console.log("Character image loaded successfully.");
+    console.log("Character image loaded successfully."); //testing statements, remove later
 }
 
 characterImage.onerror = function() {
-    console.error("Failed to load character image.");
+    console.error("Failed to load character image."); //testing statements, remove later
 }
 
-characterImage.src = 'images/skyRunnerCharacter.png';
+characterImage.src = 'images/skyRunnerCharacter.png'; 
 //
 
 function animate(){
