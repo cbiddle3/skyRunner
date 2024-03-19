@@ -46,3 +46,9 @@ function animate(){
     requestAnimationFrame(animate);
 };
 animate();
+
+const gameOverButton = document.getElementById('gameOverButton'); 
+
+gameOverButton.addEventListener('click', function(){
+    showGameOverScreen(); 
+}); 
