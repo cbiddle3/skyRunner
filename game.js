@@ -1,6 +1,7 @@
 import { Background } from './backGroundLogic.js';
 import { InputHandler } from './input.js';
 import { Character } from './character.js';
+import { Cafe, BrownBuilding, GreenBuilding, SodaShop, SushiBuilding} from './buildings.js';
 
 
 window.addEventListener('load', function() {
@@ -19,17 +20,64 @@ window.addEventListener('load', function() {
             this.background = new Background(this, 1);
             this.character = new Character(this);
             this.input = new InputHandler(this);
+            this.buildings = [];
+            this.addBuilding()
+            //this.initBuildings();
+            this.buildingTimer = 0;
+            this.buildingInterval = 700;
         }
 
         update(deltaTime) {
             this.background.update();
             this.character.update(this.input.keys)
+            this.character.y = this.height - this.character.height - this.buildings[0].height;
+
+            if (this.buildingTimer > this.buildingInterval) {
+                this.addBuilding();
+                this.buildingTimer = 0;
+            } else {
+                this.buildingTimer += deltaTime;
+            }
+
+            this.buildings.forEach(building => {
+                building.update();
+                if (building.markedForDeletion) {
+                    this.buildings.splice(this.buildings.indexOf(building), 1);
+                }
+            })
         }
 
         draw(ctx) {
             this.background.draw(ctx);
             this.character.draw(ctx);
+
+            this.buildings.forEach(building => {
+                building.draw(ctx);
+            })
         }
+
+        /*for right now this generation is poorly factored change w c++*/
+
+        addBuilding() {
+            const randBuildingIndex = Math.floor(Math.random() * 5);
+            if (randBuildingIndex === 0) {
+                this.buildings.push(new BrownBuilding(this));
+            } else if (randBuildingIndex === 1) {
+                this.buildings.push(new Cafe(this));
+            } else if (randBuildingIndex === 2) {
+                this.buildings.push(new GreenBuilding(this));
+            } else if (randBuildingIndex === 3) {
+                this.buildings.push(new SodaShop(this));
+            } else if (randBuildingIndex === 4) {
+                this.buildings.push(new SushiBuilding(this));
+            }
+        }
+
+       /* initBuildings() {
+            for (let i = 0; i < 5; i ++) {
+                this.addBuilding();
+            }
+        }*/
     }
 
     const game = new Game(canvas.width, canvas.height);

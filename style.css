@@ -15,6 +15,6 @@
     max-height: 100%;
 }
 
-#backgroundImage, #oldMan {
+#backgroundImage, #oldMan, #brownBuilding, #greenBuilding, #cafe, #sodaShop, #sushiBuilding {
     display: none;
 }
