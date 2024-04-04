@@ -2,6 +2,7 @@ import { Background } from './backGroundLogic.js';
 import { InputHandler } from './input.js';
 import { Character } from './character.js';
 import { Cafe, BrownBuilding, GreenBuilding, SodaShop, SushiBuilding} from './buildings.js';
+import { ScoreBoard } from './scoreBoard.js';
 
 
 window.addEventListener('load', function() {
@@ -20,8 +21,11 @@ window.addEventListener('load', function() {
             this.background = new Background(this, 1);
             this.character = new Character(this);
             this.input = new InputHandler(this);
+            this.scoreBoard = new ScoreBoard(this);
+            this.fontColor = 'black';
+            this.score = 0;
             this.buildings = [];
-            this.addBuilding()
+            this.addBuilding();  
             //this.initBuildings();
             this.buildingTimer = 0;
             this.buildingInterval = 700;
@@ -30,7 +34,7 @@ window.addEventListener('load', function() {
         update(deltaTime) {
             this.background.update();
             this.character.update(this.input.keys)
-            this.character.y = this.height - this.character.height - this.buildings[0].height;
+            //this.character.y = this.height - this.character.height - this.buildings[0].height;
 
             if (this.buildingTimer > this.buildingInterval) {
                 this.addBuilding();

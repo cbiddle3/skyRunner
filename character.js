@@ -10,9 +10,11 @@ export class Character {
         this.speed = 0;
         this.maxSpeed = 10;
         this.weight = 1;
+        this.onBuilding = false;
     }
 
     update(input) {
+        this.checkCollision();
         this.handleInput(input);
 
         this.x += this.speed;
@@ -29,7 +31,9 @@ export class Character {
         if (input.includes('Enter')) {
             if (this.onGround()) {
                 this.vy -= 27;
-        }
+            } else if (this.onBuilding) {
+                this.vy -= 10;
+            }
     }}
 
     draw(context) {
@@ -39,5 +43,18 @@ export class Character {
 
     onGround() {
         return this.y >= this.game.height - this.height - this.game.groundMargin;
+    }
+
+    checkCollision() {
+        this.game.buildings.forEach(building => {
+            if (building.x < this.x + this.width &&
+                building.x + building.width > this.x &&
+                building.y <= this.y + this.height &&
+                building.y + building.height > this.y) {
+                    this.y = this.game.height - this.height - building.height;
+                    this.onBuilding = true;
+                    this.game.score += 1;
+            }
+        })
     }
 }
