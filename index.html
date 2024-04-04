@@ -1,35 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset = "UTF-8">
+        <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>skyRunner</title>
-        <link rel="stylesheet" href="titleCard.css">
-        <link rel="stylesheet" href="startButton.css">
-        <link rel="stylesheet" href="gameScreenStyle.css">
-        <link rel="stylesheet" href="endScreenStyle.css">
+        <link rel = "stylesheet" href = "style.css">
     </head>
-    <body>
-        <div class="screen" id="titleScreen">
-            <img id="backgroundImage" src="images/skyRunner_logo_background.png"/>
-            <div class = "button-container">
-                <button class="startButton" onclick="showGameScreen()">Start Game</button>
-            </div>
-        </div>
-        <div class="screen" id="gameScreen">
-            <canvas id = "canvas1"> </canvas>
-            <button id = "gameOverButton">Game Over</button>
-        </div>
-        <div class="screen" id="endScreen">
-            <canvas id = "gameOverCanvas"></canvas>
-            <div id = "gameOverText">
-                <h1>GAME OVER</h1>
-                <p>Score: <span id = "score">10</span></p>
-            </div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="globalFunctions.js"></script>
-        <script src="backGroundLogic.js"></script>
-        <script src="endScreen.js"></script>
+    <body> 
+        <canvas id = "canvas1"> </canvas>
+        <img id = "backgroundImage" src="images/background.png">
+        <img id = "oldMan" src="images/skyRunnerCharacter.png">
+        <script type="module" src="game.js"> </script>
     </body>
 </html>
