@@ -1,6 +1,7 @@
 class Building {
     constructor() {
         this.markedForDeletion = false;
+        this.alreadyVisited = false;
     }
 
     update() {

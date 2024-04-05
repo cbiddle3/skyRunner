@@ -17,16 +17,15 @@ window.addEventListener('load', function() {
             this.width = width;
             this.height = height;
             this.speed = 5;
+            this.score = 0;
             this.groundMargin = 0;
             this.background = new Background(this, 1);
             this.character = new Character(this);
             this.input = new InputHandler(this);
             this.scoreBoard = new ScoreBoard(this);
             this.fontColor = 'black';
-            this.score = 0;
             this.buildings = [];
             this.addBuilding();  
-            //this.initBuildings();
             this.buildingTimer = 0;
             this.buildingInterval = 700;
         }
@@ -34,7 +33,6 @@ window.addEventListener('load', function() {
         update(deltaTime) {
             this.background.update();
             this.character.update(this.input.keys)
-            //this.character.y = this.height - this.character.height - this.buildings[0].height;
 
             if (this.buildingTimer > this.buildingInterval) {
                 this.addBuilding();
@@ -54,6 +52,7 @@ window.addEventListener('load', function() {
         draw(ctx) {
             this.background.draw(ctx);
             this.character.draw(ctx);
+            this.scoreBoard.draw(ctx);
 
             this.buildings.forEach(building => {
                 building.draw(ctx);
@@ -76,12 +75,6 @@ window.addEventListener('load', function() {
                 this.buildings.push(new SushiBuilding(this));
             }
         }
-
-       /* initBuildings() {
-            for (let i = 0; i < 5; i ++) {
-                this.addBuilding();
-            }
-        }*/
     }
 
     const game = new Game(canvas.width, canvas.height);
