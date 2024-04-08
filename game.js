@@ -33,7 +33,6 @@ window.addEventListener('load', function() {
         update(deltaTime) {
             this.background.update();
             this.character.update(this.input.keys)
-
             if (this.buildingTimer > this.buildingInterval) {
                 this.addBuilding();
                 this.buildingTimer = 0;
@@ -60,7 +59,6 @@ window.addEventListener('load', function() {
         }
 
         /*for right now this generation is poorly factored change w c++*/
-
         addBuilding() {
             const randBuildingIndex = Math.floor(Math.random() * 5);
             if (randBuildingIndex === 0) {
@@ -88,7 +86,5 @@ window.addEventListener('load', function() {
         game.draw(ctx);
         requestAnimationFrame(animate);
     }
-
     animate(0);
-
 })
