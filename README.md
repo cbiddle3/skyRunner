@@ -2,28 +2,8 @@
 
 Brief Description: You are a character that is running on top of buildings in the city. The object of the game is to get as far as you can while jumping over the cracks/spaces between the buildings. In order to jump you must press the space key. If you fall in the crack of the buildings the game is over and displays your achieved distance.
 
-Currently the html files are seperate for each component (index.html, startButton.html, and titleCard.html), however, that will be changed soon. This thing hates me
-
-## You can run the code the following two ways:
-
-## One:
-
-    A. Install the visual studio code "open in browser" extension 
-<img width="678" alt="Screenshot 2024-02-19 at 9 59 42 PM" src="https://github.com/cbiddle3/skyRunner/assets/123024485/cf35a4fe-eb0b-4878-8960-52cc457ae000">
-
-    B. Navigate to <placeHolder.html>
-
-    C. Have a supported browser open
-
-    D. Press `⌘k w` to open it on your browser
-
-## Two:
-
-    A. Go to your Finder/File Explorer
-
-    B. Navigate to the skyRunner repository you cloned
-
-    C. Select the <placeHolder>.html file and it will open in your browser
+## You can run the code by simply clicking on the following link: 
+[https://cbiddle3.github.io/skyRunner/]
 
 #### Class Diagram for GUI
 
