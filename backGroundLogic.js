@@ -5,7 +5,7 @@ export class Background {
     this.y = 0
     this.width = 1300
     this.height = 500
-    this.image = document.getElementById('backgroundImage')
+    this.image = document.getElementById('background-image')
     this.speedModifier = speedModifier
   }
 
