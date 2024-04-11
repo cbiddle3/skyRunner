@@ -2,7 +2,7 @@
 
 Brief Description: You are a character that is running on top of buildings in the city. The object of the game is to get as far as you can while jumping over the cracks/spaces between the buildings. In order to jump you must press the space key. If you fall in the crack of the buildings the game is over and displays your achieved distance.
 
-Currently the html files are seperate for each component (index.html, startButton.html, and titleCard.html), however, that will be changed soon.
+Currently the html files are seperate for each component (index.html, startButton.html, and titleCard.html), however, that will be changed soon. This thing hates me
 
 ## You can run the code the following two ways:
 
