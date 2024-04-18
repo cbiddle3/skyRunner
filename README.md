@@ -36,11 +36,11 @@ This gives an overall view of the different components and how they will be orga
 
 ```mermaid
 sequenceDiagram
-   GUI->>Interpreter:
-   Interpreter-->>ScoreKeeper:
-   Interpreter-->>BuildingAI:
-   ScoreKeeper-->>GUI:
-   BuildingAI-->>GUI:
+   GUI->>Interpreter: 
+   Interpreter-->>ScoreKeeper: 
+   Interpreter-->>BuildingAI: 
+   ScoreKeeper-->>GUI: 
+   BuildingAI-->>GUI: 
 ```
 
 This shows how the GUI (defined above) will make calls to the backEnd server in order to get the game logic regarding keeping track of highest score and the game logic regarding generating the next set of buildings (platform).
