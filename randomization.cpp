@@ -5,74 +5,61 @@
 #include <string>
 #include <node.h>
 
-namespace randomization {
+namespace randomization 
+{
+using v8::FunctionCallbackInfo;
+using v8::Array;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::String;
+using v8::Value;
+using v8::Number;
 
-    using v8::FunctionCallbackInfo;
-    using v8::Array;
-    using v8::Isolate;
-    using v8::Local;
-    using v8::Object;
-    using v8::String;
-    using v8::Value;
-    using v8 :: Number;
+struct Building {
+    std::string name; 
+    int width;
+    int height; 
+    Building(std::string n, int w, int h) : name(n), width(w), height(h) {}
+}; 
 
-    struct Building {
-        std::string name; 
-        int width;
-        int height; 
+void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
+    Isolate* isolate = args.GetIsolate();
 
-        Building(std::string n, int w, int h) : name(n), width(w), height(h) {}
-    }; 
+    std::vector<Building> buildingTypes;
+    buildingTypes.push_back(Building("brown-building", 100, 130));
+    buildingTypes.push_back(Building("cafe", 150, 85));
+    buildingTypes.push_back(Building("green-building", 100, 170));
+    buildingTypes.push_back(Building("soda-shop", 200, 90));
+    buildingTypes.push_back(Building("sushi-building", 100, 150));
 
-    void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
-        Isolate* isolate = args.GetIsolate();
+    std::srand(std::time(nullptr));
 
-        std::vector<Building> buildingTypes;
-        buildingTypes.push_back(Building("brown-building", 100, 130));
-        buildingTypes.push_back(Building("cafe", 150, 85));
-        buildingTypes.push_back(Building("green-building", 100, 170));
-        buildingTypes.push_back(Building("soda-shop", 200, 90));
-        buildingTypes.push_back(Building("sushi-building", 100, 150));
+    int index = std::rand() % buildingTypes.size();
 
-        std::srand(std::time(nullptr));
+    Building building = buildingTypes[index];
 
-        int index = std::rand() % buildingTypes.size();
+    Local<Array> result = Array::New(isolate, 3);
 
-        Building building = buildingTypes[index];
+    result->Set(isolate->GetCurrentContext(), 0, String::NewFromUtf8(isolate, building.name.c_str()).ToLocalChecked());
+    result->Set(isolate->GetCurrentContext(), 1, String::NewFromUtf8(isolate, std::to_string(building.width).c_str()).ToLocalChecked());
+    result->Set(isolate->GetCurrentContext(), 2, String::NewFromUtf8(isolate, std::to_string(building.height).c_str()).ToLocalChecked());
 
-        Local<Array> result = Array::New(isolate, 3);
-
-        result->Set(isolate->GetCurrentContext(), 0, String::NewFromUtf8(isolate, building.name.c_str()).ToLocalChecked());
-        result->Set(isolate->GetCurrentContext(), 1, String::NewFromUtf8(isolate, std::to_string(building.width).c_str()).ToLocalChecked());
-        result->Set(isolate->GetCurrentContext(), 2, String::NewFromUtf8(isolate, std::to_string(building.height).c_str()).ToLocalChecked());
-
-        args.GetReturnValue().Set(result);
-    }
-
-    void GetRandomGap(const FunctionCallbackInfo<Value>& args) {
-        Isolate* isolate = args.GetIsolate(); 
-        std::srand(std::time(nullptr));
-        int gap = std::rand() % 31 + 20;
-        auto rtngap = Number::New(isolate, gap); 
-        args.GetReturnValue().Set(rtngap);
-    }
-
-    void Init(Local<Object> exports) {
-        NODE_SET_METHOD(exports, "GetRandomBuilding", GetRandomBuilding);
-        NODE_SET_METHOD(exports, "GetRandomGap", GetRandomGap);
-    }
-
-    NODE_MODULE(randomization, Init)
+    args.GetReturnValue().Set(result);
 }
 
-/* int main() {
-    Building building = getRandomBuilding();
-    int gap = getRandomGap();
+void GetRandomGap(const FunctionCallbackInfo<Value>& args) {
+    Isolate* isolate = args.GetIsolate(); 
+    std::srand(std::time(nullptr));
+    int gap = std::rand() % 31 + 20;
+    auto rtngap = Number::New(isolate, gap); 
+    args.GetReturnValue().Set(rtngap);
+}
 
-    std::cout << "Building Name: " << building.name << std::endl; 
-    std::cout << "Width: " << building.width << std::endl; 
-    std::cout << "Height: " << building.height << std::endl; 
-    std::cout << "Gap: " << gap << std::endl; 
+void Init(Local<Object> exports) {
+    NODE_SET_METHOD(exports, "GetRandomBuilding", GetRandomBuilding);
+    NODE_SET_METHOD(exports, "GetRandomGap", GetRandomGap);
+}
 
-    return 0; 
-} */
+NODE_MODULE(randomization, Init)
+}
