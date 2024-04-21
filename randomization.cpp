@@ -1,3 +1,5 @@
+// Copyright 2024 Sarah Fidahussain
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -5,21 +7,22 @@
 #include <string>
 #include <node.h>
 
-namespace randomization 
-{
-using v8::FunctionCallbackInfo;
+namespace randomization {
+
 using v8::Array;
+using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
 using v8::Object;
+using v8::Number;
 using v8::String;
 using v8::Value;
-using v8::Number;
 
 struct Building {
     std::string name; 
     int width;
-    int height; 
+    int height;
+
     Building(std::string n, int w, int h) : name(n), width(w), height(h) {}
 }; 
 
@@ -51,6 +54,7 @@ void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
 void GetRandomGap(const FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = args.GetIsolate(); 
     std::srand(std::time(nullptr));
+    
     int gap = std::rand() % 31 + 20;
     auto rtngap = Number::New(isolate, gap); 
     args.GetReturnValue().Set(rtngap);
