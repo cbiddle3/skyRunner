@@ -80,4 +80,4 @@ void Init(Local<Object> exports) {
 NODE_MODULE(randomization, Init)
 }  // namespace randomization
 
-#endif
+#endif  // RANDOMIZATION_H_
