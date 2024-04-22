@@ -1,0 +1,17 @@
+{
+  "name": "skyrunner",
+  "version": "1.0.0",
+  "main": "./build/Release/randomization.node",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "gypfile": true
+}

@@ -1,7 +1,7 @@
 import { Background } from './backGroundLogic.js'
 import { InputHandler } from './input.js'
 import { Character } from './character.js'
-import { Cafe, BrownBuilding, GreenBuilding, SodaShop, SushiBuilding } from './buildings.js'
+import { Building } from './buildings.js'
 import { ScoreBoard } from './scoreBoard.js'
 
 window.addEventListener('load', function () {
@@ -24,7 +24,6 @@ window.addEventListener('load', function () {
       this.scoreBoard = new ScoreBoard(this)
       this.fontColor = 'black'
       this.buildings = []
-      this.addBuilding()
       this.buildingTimer = 0
       this.buildingInterval = 700
     }
@@ -33,7 +32,22 @@ window.addEventListener('load', function () {
       this.background.update()
       this.character.update(this.input.keys)
       if (this.buildingTimer > this.buildingInterval) {
-        this.addBuilding()
+        fetch('http://localhost:3001/api/random-building-data')
+          .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+          })
+          .then(data => {
+            console.log('Received data:', data);
+            let buildingWidth = Number(data.data[1])
+            let buildingHeight = Number(data.data[2])
+            this.buildings.push(new Building(this, data.data[0], buildingWidth, buildingHeight))  })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+          console.log(this.buildings)
         this.buildingTimer = 0
       } else {
         this.buildingTimer += deltaTime
@@ -55,22 +69,6 @@ window.addEventListener('load', function () {
       this.buildings.forEach(building => {
         building.draw(ctx)
       })
-    }
-
-    /* for right now this generation is poorly factored change w c++ */
-    addBuilding () {
-      const randBuildingIndex = Math.floor(Math.random() * 5)
-      if (randBuildingIndex === 0) {
-        this.buildings.push(new BrownBuilding(this))
-      } else if (randBuildingIndex === 1) {
-        this.buildings.push(new Cafe(this))
-      } else if (randBuildingIndex === 2) {
-        this.buildings.push(new GreenBuilding(this))
-      } else if (randBuildingIndex === 3) {
-        this.buildings.push(new SodaShop(this))
-      } else if (randBuildingIndex === 4) {
-        this.buildings.push(new SushiBuilding(this))
-      }
     }
   }
 
