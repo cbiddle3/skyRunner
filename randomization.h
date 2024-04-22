@@ -1,5 +1,8 @@
 // Copyright 2024 Sarah Fidahussain
 
+#ifndef RANDOMIZATION_H_
+#define RANDOMIZATION_H_
+
 #include <ctime>
 #include <iostream>
 #include <node.h>
@@ -75,3 +78,5 @@ void Init(Local<Object> exports) {
 
 NODE_MODULE(randomization, Init)
 } // namespace randomization
+
+#endif // RANDOMIZATION_H_
