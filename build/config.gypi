@@ -414,16 +414,6 @@
     "xcode_version": "13.0",
     "nodedir": "/Users/chloebiddle/Library/Caches/node-gyp/21.6.1",
     "python": "/opt/homebrew/opt/python@3.12/bin/python3.12",
-    "standalone_static_library": 1,
-    "global_prefix": "/Users/chloebiddle/.nvm/versions/node/v21.6.1",
-    "local_prefix": "/Users/chloebiddle/csci3300/skyRunner",
-    "globalconfig": "/Users/chloebiddle/.nvm/versions/node/v21.6.1/etc/npmrc",
-    "init_module": "/Users/chloebiddle/.npm-init.js",
-    "userconfig": "/Users/chloebiddle/.npmrc",
-    "npm_version": "10.2.4",
-    "node_gyp": "/Users/chloebiddle/.nvm/versions/node/v21.6.1/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
-    "cache": "/Users/chloebiddle/.npm",
-    "user_agent": "npm/10.2.4 node/v21.6.1 darwin arm64 workspaces/false",
-    "prefix": "/Users/chloebiddle/.nvm/versions/node/v21.6.1"
+    "standalone_static_library": 1
   }
 }
