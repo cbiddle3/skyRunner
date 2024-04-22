@@ -3,9 +3,10 @@
 #ifndef RANDOMIZATION_H_
 #define RANDOMIZATION_H_
 
+#include <node.h>
+
 #include <ctime>
 #include <iostream>
-#include <node.h>
 #include <string>
 #include <vector>
 
@@ -77,6 +78,6 @@ void Init(Local<Object> exports) {
 }
 
 NODE_MODULE(randomization, Init)
-} // namespace randomization
+}  // namespace randomization
 
-#endif // RANDOMIZATION_H_
+#endif
