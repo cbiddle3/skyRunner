@@ -2,8 +2,8 @@
 
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 #include <node.h>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -75,4 +75,4 @@ void Init(Local<Object> exports) {
 }
 
 NODE_MODULE(randomization, Init)
-}  // namespace randomization
+} // namespace randomization
