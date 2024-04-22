@@ -11,6 +11,8 @@ DEFS_Debug := \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
+	'-DOPENSSL_NO_PINSHARED' \
+	'-DOPENSSL_THREADS' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG'
@@ -45,13 +47,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/include/node \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/src \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/openssl/config \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/openssl/openssl/include \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/uv/include \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/zlib \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/v8/include
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/include/node \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/src \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/openssl/config \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/openssl/openssl/include \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/uv/include \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/zlib \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=randomization' \
@@ -62,13 +64,14 @@ DEFS_Release := \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
+	'-DOPENSSL_NO_PINSHARED' \
+	'-DOPENSSL_THREADS' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
 CFLAGS_Release := \
 	-O3 \
 	-gdwarf-2 \
-	-flto \
 	-mmacosx-version-min=11.0 \
 	-arch arm64 \
 	-Wall \
@@ -95,13 +98,13 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/include/node \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/src \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/openssl/config \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/openssl/openssl/include \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/uv/include \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/zlib \
-	-I/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2/deps/v8/include
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/include/node \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/src \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/openssl/config \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/openssl/openssl/include \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/uv/include \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/zlib \
+	-I/Users/chloebiddle/Library/Caches/node-gyp/21.6.1/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/randomization.o
