@@ -1,3 +1,5 @@
+// Copyright 2024 Sarah Fidahussain
+
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -43,11 +45,17 @@ void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
 
     Local<Array> result = Array::New(isolate, 3);
 
-    result->Set(isolate->GetCurrentContext(), 0, String::NewFromUtf8(isolate, building.name.c_str()).ToLocalChecked());
-    result->Set(isolate->GetCurrentContext(), 1,
-                String::NewFromUtf8(isolate, std::to_string(building.width).c_str()).ToLocalChecked());
-    result->Set(isolate->GetCurrentContext(), 2,
-                String::NewFromUtf8(isolate, std::to_string(building.height).c_str()).ToLocalChecked());
+    result->Set(
+        isolate->GetCurrentContext(), 0,
+        String::NewFromUtf8(isolate, building.name.c_str()).ToLocalChecked());
+    result->Set(
+        isolate->GetCurrentContext(), 1,
+        String::NewFromUtf8(isolate, std::to_string(building.width).c_str())
+            .ToLocalChecked());
+    result->Set(
+        isolate->GetCurrentContext(), 2,
+        String::NewFromUtf8(isolate, std::to_string(building.height).c_str())
+            .ToLocalChecked());
 
     args.GetReturnValue().Set(result);
 }
@@ -67,4 +75,4 @@ void Init(Local<Object> exports) {
 }
 
 NODE_MODULE(randomization, Init)
-} // namespace randomization
+}  // namespace randomization
