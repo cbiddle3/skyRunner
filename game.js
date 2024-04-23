@@ -1,4 +1,3 @@
-// replay button code in story 16
 import { Background } from './backGroundLogic.js'
 import { InputHandler } from './input.js'
 import { Character } from './character.js'
