@@ -1,5 +1,5 @@
 export class ScoreBoard {
-  constructor(game) {
+  constructor (game) {
     this.game = game
     this.fontSize = 30
     this.fontFamily = 'Helvetica'
@@ -12,7 +12,7 @@ export class ScoreBoard {
     context.fillText('Score: ' + this.game.score, 20, 50)
   }
 
-  updateScore(score){
+  updateScore (score) {
     this.game.score = score
   }
 }

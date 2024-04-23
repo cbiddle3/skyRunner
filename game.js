@@ -4,7 +4,7 @@ import { Character } from './character.js'
 import { Cafe, BrownBuilding, GreenBuilding, SodaShop, SushiBuilding } from './buildings.js'
 import { ScoreBoard } from './scoreBoard.js'
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   const canvas = this.document.getElementById('canvas1')
   const ctx = canvas.getContext('2d')
   canvas.width = 1300
@@ -57,7 +57,8 @@ window.addEventListener('load', function() {
       })
     }
 
-    endGame(){
+    endGame () {
+      const finalScore = this.score;
       window.location.href = `endPage.html?score=${finalScore}`
     }
 

@@ -48,7 +48,7 @@
 .end-page button {
   padding: 10px 20px;
   font-size: 30px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   color: white;
   background-color: lightcoral;
   border: none;
@@ -67,7 +67,7 @@
   margin-top: 100px;
   color: white;
   font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 #canvas1 {
