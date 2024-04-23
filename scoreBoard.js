@@ -1,5 +1,5 @@
 export class ScoreBoard {
-  constructor (game) {
+  constructor(game) {
     this.game = game
     this.fontSize = 30
     this.fontFamily = 'Helvetica'
@@ -13,6 +13,6 @@ export class ScoreBoard {
   }
 
   updateScore(score){
-    this.game.score = score; 
+    this.game.score = score
   }
 }
