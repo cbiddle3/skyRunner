@@ -16,12 +16,17 @@
     "dcheck_always_on": 0,
     "debug_nghttp2": "false",
     "debug_node": "false",
+<<<<<<< HEAD
     "enable_lto": "false",
+=======
+    "enable_lto": "true",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
     "enable_pgo_generate": "false",
     "enable_pgo_use": "false",
     "error_on_warn": "false",
     "force_dynamic_crt": 0,
     "host_arch": "arm64",
+<<<<<<< HEAD
     "icu_data_in": "../../deps/icu-tmp/icudt73l.dat",
     "icu_endianness": "l",
     "icu_gyp_path": "tools/icu/icu-generic.gyp",
@@ -31,6 +36,14 @@
     "is_debug": 0,
     "libdir": "lib",
     "llvm_version": "13.0",
+=======
+    "icu_gyp_path": "tools/icu/icu-system.gyp",
+    "icu_small": "false",
+    "icu_ver_major": "74",
+    "is_debug": 0,
+    "libdir": "lib",
+    "llvm_version": "15.0",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
     "napi_build_version": "9",
     "node_builtin_shareable_builtins": [
       "deps/cjs-module-lexer/lexer.js",
@@ -42,8 +55,13 @@
     "node_enable_d8": "false",
     "node_enable_v8_vtunejit": "false",
     "node_fipsinstall": "false",
+<<<<<<< HEAD
     "node_install_corepack": "true",
     "node_install_npm": "true",
+=======
+    "node_install_corepack": "false",
+    "node_install_npm": "false",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
     "node_library_files": [
       "lib/_http_agent.js",
       "lib/_http_client.js",
@@ -150,6 +168,10 @@
       "lib/internal/fs/cp/cp-sync.js",
       "lib/internal/fs/cp/cp.js",
       "lib/internal/fs/dir.js",
+<<<<<<< HEAD
+=======
+      "lib/internal/fs/glob.js",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
       "lib/internal/fs/promises.js",
       "lib/internal/fs/read/context.js",
       "lib/internal/fs/recursive_watch.js",
@@ -196,7 +218,10 @@
       "lib/internal/modules/esm/loader.js",
       "lib/internal/modules/esm/module_job.js",
       "lib/internal/modules/esm/module_map.js",
+<<<<<<< HEAD
       "lib/internal/modules/esm/package_config.js",
+=======
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
       "lib/internal/modules/esm/resolve.js",
       "lib/internal/modules/esm/shared_constants.js",
       "lib/internal/modules/esm/translators.js",
@@ -338,6 +363,10 @@
       "lib/readline.js",
       "lib/readline/promises.js",
       "lib/repl.js",
+<<<<<<< HEAD
+=======
+      "lib/sea.js",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
       "lib/stream.js",
       "lib/stream/consumers.js",
       "lib/stream/promises.js",
@@ -360,6 +389,7 @@
       "lib/worker_threads.js",
       "lib/zlib.js"
     ],
+<<<<<<< HEAD
     "node_module_version": 115,
     "node_no_browser_globals": "false",
     "node_prefix": "/",
@@ -374,6 +404,22 @@
     "node_shared_ngtcp2": "false",
     "node_shared_openssl": "false",
     "node_shared_zlib": "false",
+=======
+    "node_module_version": 120,
+    "node_no_browser_globals": "false",
+    "node_prefix": "/opt/homebrew/Cellar/node/21.7.2",
+    "node_release_urlbase": "",
+    "node_shared": "false",
+    "node_shared_brotli": "true",
+    "node_shared_cares": "true",
+    "node_shared_http_parser": "false",
+    "node_shared_libuv": "true",
+    "node_shared_nghttp2": "true",
+    "node_shared_nghttp3": "false",
+    "node_shared_ngtcp2": "false",
+    "node_shared_openssl": "true",
+    "node_shared_zlib": "true",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
     "node_tag": "",
     "node_target_type": "executable",
     "node_use_bundled_v8": "true",
@@ -385,11 +431,20 @@
     "node_without_node_options": "false",
     "node_write_snapshot_as_array_literals": "false",
     "openssl_is_fips": "false",
+<<<<<<< HEAD
     "openssl_quic": "true",
     "ossfuzz": "false",
     "shlib_suffix": "115.dylib",
     "single_executable_application": "true",
     "target_arch": "arm64",
+=======
+    "openssl_quic": "false",
+    "ossfuzz": "false",
+    "shlib_suffix": "120.dylib",
+    "single_executable_application": "true",
+    "target_arch": "arm64",
+    "use_prefix_to_find_headers": "false",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
     "v8_enable_31bit_smis_on_64bit_arch": 0,
     "v8_enable_extensible_ro_snapshot": 0,
     "v8_enable_gdbjit": 0,
@@ -411,9 +466,14 @@
     "v8_trace_maps": 0,
     "v8_use_siphash": 1,
     "want_separate_host_toolset": 0,
+<<<<<<< HEAD
     "xcode_version": "13.0",
     "nodedir": "/Users/medhani/Library/Caches/node-gyp/20.11.1",
     "python": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+=======
+    "nodedir": "/Users/sarahfidahussain/Library/Caches/node-gyp/21.7.2",
+    "python": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+>>>>>>> f52515130b77138fbb5dbccc6a7a8b4bb41b3e62
     "standalone_static_library": 1
   }
 }
