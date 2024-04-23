@@ -57,6 +57,10 @@ window.addEventListener('load', function () {
       })
     }
 
+    endGame(){
+      window.location.href = `endPage.html?score=${finalScore}`;
+    }
+
     /* for right now this generation is poorly factored change w c++ */
     addBuilding () {
       const randBuildingIndex = Math.floor(Math.random() * 5)
