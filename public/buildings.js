@@ -1,10 +1,10 @@
 export class Building {
-  constructor (game, buildingName, width, height) {
+  constructor (game, buildingName, width, height, gap) {
     this.game = game
     this.width = width
     this.height = height
     this.image = document.getElementById(buildingName)
-    this.x = this.game.width
+    this.x = this.game.width + gap
     this.y = this.game.height - this.height - this.game.groundMargin
     this.markedForDeletion = false
     this.alreadyVisited = false

@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
       this.debug = true
       this.width = width
       this.height = height
-      this.speed = 5
+      this.speed = 4
       this.score = 0
       this.groundMargin = 0
       this.background = new Background(this, 1)
@@ -25,13 +25,29 @@ window.addEventListener('load', function () {
       this.fontColor = 'black'
       this.buildings = []
       this.buildingTimer = 0
-      this.buildingInterval = 700
+      this.buildingInterval = 800
+      this.gap = 0
+      this.particles = []
     }
 
     update (deltaTime) {
       this.background.update()
       this.character.update(this.input.keys)
       if (this.buildingTimer > this.buildingInterval) {
+        fetch('http://localhost:3001/api/random-gap')
+          .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+          })
+          .then(result => {
+            console.log('Received data:', result);
+            this.gap += Number(result.result)
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
         fetch('http://localhost:3001/api/random-building-data')
           .then(response => {
           if (!response.ok) {
@@ -43,7 +59,7 @@ window.addEventListener('load', function () {
             console.log('Received data:', data);
             let buildingWidth = Number(data.data[1])
             let buildingHeight = Number(data.data[2])
-            this.buildings.push(new Building(this, data.data[0], buildingWidth, buildingHeight))  })
+            this.buildings.push(new Building(this, data.data[0], buildingWidth, buildingHeight, this.gap))})
           .catch(error => {
             console.error('Error fetching data:', error);
           });
@@ -59,6 +75,13 @@ window.addEventListener('load', function () {
           this.buildings.splice(this.buildings.indexOf(building), 1)
         }
       })
+
+      this.particles.forEach((particle, index) => {
+        particle.update()
+        if (particle.markedForDeletion) {
+          this.particles.splice(index, 1)
+        }
+      })
     }
 
     draw (ctx) {
@@ -68,6 +91,10 @@ window.addEventListener('load', function () {
 
       this.buildings.forEach(building => {
         building.draw(ctx)
+      })
+
+      this.particles.forEach((particle) => {
+        particle.draw(ctx)
       })
     }
   }
