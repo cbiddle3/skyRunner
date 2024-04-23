@@ -1,4 +1,3 @@
-
 const assert = require('assert')
 const randomization = require('./build/Release/randomization.node')
 

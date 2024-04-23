@@ -58,7 +58,7 @@ window.addEventListener('load', function () {
     }
 
     endGame () {
-      const finalScore = this.score;
+      const finalScore = this.score
       window.location.href = `endPage.html?score=${finalScore}`
     }
 
