@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
       this.debug = true
       this.width = width
       this.height = height
-      this.speed = 10
+      this.speed = 6
       this.score = 0
       this.groundMargin = 0
       this.background = new Background(this, 0.5)
@@ -111,7 +111,7 @@ window.addEventListener('load', function () {
           console.error('Error fetching data:', error);
         });
         if (!this.gameStart) {
-          this.totalGap -= (this.width * 1.6)
+          this.totalGap -= (this.width * 1.9)
         }
     }
 
