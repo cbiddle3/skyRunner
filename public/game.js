@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
       this.debug = true
       this.width = width
       this.height = height
-      this.speed = 6
+      this.speed = 10
       this.score = 0
       this.groundMargin = 0
       this.background = new Background(this, 0.5)
@@ -40,7 +40,7 @@ window.addEventListener('load', function () {
         building.update()
         if (building.markedForDeletion) {
           this.buildings.splice(this.buildings.indexOf(building), 1)
-          this.gaps.splice(this.gaps.indexOf(building.gap), 1)
+          //this.gaps.splice(this.gaps.indexOf(building.gap), 1)
         }
       })
 
@@ -111,7 +111,7 @@ window.addEventListener('load', function () {
           console.error('Error fetching data:', error);
         });
         if (!this.gameStart) {
-          this.totalGap -= (this.width * 2)
+          this.totalGap -= (this.width * 1.6)
         }
     }
 

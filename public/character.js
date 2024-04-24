@@ -11,7 +11,7 @@ export class Character {
     this.height = 100
     this.x = 0
     this.y = this.game.height - this.height - this.game.groundMargin
-    this.weight = 2
+    this.weight = 3
     this.onBuilding = false
   }
 
