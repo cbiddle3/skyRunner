@@ -5,6 +5,7 @@
 #include <ctime>
 #include <vector>
 #include <string>
+#include <random>
 #include <node.h>
 
 namespace randomization {
@@ -36,9 +37,9 @@ void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
     buildingTypes.push_back(Building("soda-shop", 200, 90));
     buildingTypes.push_back(Building("sushi-building", 100, 150));
 
-    std::srand(std::time(nullptr));
-
-    int index = std::rand() % buildingTypes.size();
+    std::mt19937 rng(std::random_device{}());
+    std::uniform_int_distribution<int> dist(0, buildingTypes.size() - 1);
+    int index = dist(rng);
 
     Building building = buildingTypes[index];
 
@@ -53,9 +54,9 @@ void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
 
 void GetRandomGap(const FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = args.GetIsolate(); 
-    std::srand(std::time(nullptr));
-    
-    int gap = std::rand() % 31 + 20;
+    std::mt19937 rng(std::random_device{}());
+    std::uniform_int_distribution<int> dist(90, 160);
+    int gap = dist(rng);
     auto rtngap = Number::New(isolate, gap); 
     args.GetReturnValue().Set(rtngap);
 }

@@ -24,13 +24,21 @@ app.get('/favicon.ico', (req, res) => {
 
 
 app.get('/api/random-building-data', (req, res) => {
-  const randomData = randomization.GetRandomBuilding();
-  res.json({ data: randomData });
+  const numOfBuildings = 10
+  let randomBuildings = []
+  for (x = 0; x < numOfBuildings; x++) {
+    randomBuildings.push(randomization.GetRandomBuilding())
+  }
+  res.json({ data: randomBuildings });
 });
 
 app.get('/api/random-gap', (req, res) => {
-  const result = randomization.GetRandomGap();
-  res.json({ result });
+  const numOfGaps = 10
+  let randGaps = []
+  for (x =0; x < numOfGaps; x++) {
+    randGaps.push(randomization.GetRandomGap())
+  }
+  res.json({ randGaps });
 });
 
 app.listen(port, () => {

@@ -4,7 +4,8 @@ export class Building {
     this.width = width
     this.height = height
     this.image = document.getElementById(buildingName)
-    this.x = this.game.width + gap
+    this.gap = gap
+    this.x = gap
     this.y = this.game.height - this.height - this.game.groundMargin
     this.markedForDeletion = false
     this.alreadyVisited = false

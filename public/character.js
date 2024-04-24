@@ -11,8 +11,6 @@ export class Character {
     this.height = 100
     this.x = 0
     this.y = this.game.height - this.height - this.game.groundMargin
-    this.speed = 0
-    this.maxSpeed = 10
     this.weight = 2
     this.onBuilding = false
   }
@@ -20,9 +18,6 @@ export class Character {
   update (input) {
     this.checkCollision()
     this.handleInput(input)
-    this.x += this.speed
-    if (this.x < 0) this.x = 0
-    if (this.x > this.game.width - this.width) this.x = this.game.width - this.width
     // vertical movement
     this.y += this.vy
     if (!this.onGround()) {
@@ -67,8 +62,6 @@ export class Character {
           this.game.score += 1
         }
         building.alreadyVisited = true
-
-        console.log('hit building')
       }
     })
   }
