@@ -40,7 +40,6 @@ window.addEventListener('load', function () {
         building.update()
         if (building.markedForDeletion) {
           this.buildings.splice(this.buildings.indexOf(building), 1)
-          //this.gaps.splice(this.gaps.indexOf(building.gap), 1)
         }
       })
 
@@ -52,15 +51,12 @@ window.addEventListener('load', function () {
       })
 
       if (this.buildingTimer > this.buildingInterval || this.gameStart) {
-        this.fetchRandGaps()
-        this.fetchRandBuilds()
         if (this.gameStart) {
-          this.fetchRandGaps()
-          this.fetchRandBuilds()
-          //this.totalGap -= this.width * 1.5
+          this.initFetchRandData()
         }
-        //this.gaps = []
-        //this.totalGap -= this.width * 1.5
+        else {
+          this.fetchRandData()
+        }
         this.buildingTimer = 0
       } else {
         this.buildingTimer += deltaTime
@@ -68,51 +64,111 @@ window.addEventListener('load', function () {
       this.gameStart = false
     }
 
-    fetchRandGaps () {
+    async fetchRandData () {
       fetch('http://localhost:3001/api/random-gap')
-          .then(response => {
+        .then(response => {
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok')
           }
-          return response.json();
-          })
-          .then(result => {
-            console.log('Received data:', result);
-            for (let x = 0; x < 10; x++) {
-              this.gaps.push(Number(result["randGaps"][x]))
-              console.log(this.gaps)
-            }
-          })
-          .catch(error => {
-            console.error('Error fetching data:', error);
-          });
+          return response.json()
+        })
+        .then(result => {
+          console.log('Received data:', result)
+          for (let x = 0; x < 10; x++) {
+            this.gaps.push(Number(result["randGaps"][x]))
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error)
+        })
+        .then(() => {
+          fetch('http://localhost:3001/api/random-building-data')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok')
+              }
+              return response.json()
+            })
+            .then(data => {
+              console.log('Received data:', data)
+              for (let x = 0; x < 10; x++) {
+                let buildingWidth = Number(data.data[x][1])
+                let buildingHeight = Number(data.data[x][2])
+                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
+                this.totalGap += buildingWidth
+                this.totalGap += this.gaps[x]
+              }
+              this.gaps = []
+            })      
+            .catch(error => {
+              console.error('Error fetching data:', error)
+            })
+        })
+      this.totalGap -= (this.width * 1.9)
     }
 
-    fetchRandBuilds () {
-      fetch('http://localhost:3001/api/random-building-data')
+    async initFetchRandData () {
+      fetch('http://localhost:3001/api/random-gap')
         .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-        })
-        .then(data => {
-          console.log('Received data:', data);
-          for (let x = 0; x < 10; x++) {
-            let buildingWidth = Number(data.data[x][1])
-            let buildingHeight = Number(data.data[x][2])
-            this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
-            this.totalGap += buildingWidth
-            this.totalGap += this.gaps[x]
-            console.log(this.buildings)
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
           }
-        })      
+          return response.json()
+        })
+        .then(result => {
+          console.log('Received data:', result)
+          for (let x = 0; x < 10; x++) {
+            this.gaps.push(Number(result["randGaps"][x]))
+          }
+        })
         .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-        if (!this.gameStart) {
-          this.totalGap -= (this.width * 1.9)
-        }
+          console.error('Error fetching data:', error)
+        })
+        .then(() => {
+          fetch('http://localhost:3001/api/random-building-data')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok')
+              }
+              return response.json()
+            })
+            .then(data => {
+              console.log('Received data:', data)
+              for (let x = 0; x < 10; x++) {
+                let buildingWidth = Number(data.data[x][1])
+                let buildingHeight = Number(data.data[x][2])
+                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
+                this.totalGap += buildingWidth
+                this.totalGap += this.gaps[x]
+              }
+            })      
+            .catch(error => {
+              console.error('Error fetching data:', error)
+            })
+        })
+        .then(() => {
+          fetch('http://localhost:3001/api/random-building-data')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok')
+              }
+              return response.json()
+            })
+            .then(data => {
+              console.log('Received data:', data)
+              for (let x = 0; x < 10; x++) {
+                let buildingWidth = Number(data.data[x][1])
+                let buildingHeight = Number(data.data[x][2])
+                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
+                this.totalGap += buildingWidth
+                this.totalGap += this.gaps[x]
+              }
+              this.gaps = []
+            })      
+            .catch(error => {
+              console.error('Error fetching data:', error)
+            })
+        })
     }
 
     draw (ctx) {

@@ -8,7 +8,7 @@ app.use(express.static('public'));
 const port = 3001;
 
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'http://localhost:3001'
 }));
 
 const publicPath = path.join(__dirname, 'public');
