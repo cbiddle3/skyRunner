@@ -13,8 +13,8 @@ app.use(cors({
 
 const publicPath = path.join(__dirname, 'public')
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'))
+app.get('/start', (req, res) => {
+  res.sendFile(path.join(publicPath, 'startPage.html'))
 })
 
 app.get('/favicon.ico', (req, res) => {

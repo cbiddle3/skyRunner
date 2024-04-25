@@ -185,6 +185,11 @@ window.addEventListener('load', function () {
       })
       this.character.draw(ctx)
     }
+
+    endGame () {
+      const finalScore = this.score
+      window.location.href = `endPage.html?score=${finalScore}`
+    }
   }
 
   const game = new Game(canvas.width, canvas.height)
