@@ -11,4 +11,8 @@ export class ScoreBoard {
     context.fillStyle = this.game.fontColor
     context.fillText('Score: ' + this.game.score, 20, 50)
   }
+
+  updateScore (score) {
+    this.game.score = score
+  }
 }
