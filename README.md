@@ -9,7 +9,7 @@ Brief Description: You are a character that is running on top of buildings in th
 4) Run 'npm install -g node-gyp'
 5) Run 'node-gyp configure build'
 6) Run 'node server.js'
-7) Open [http://localhost:3001/]
+7) Open [http://localhost:3001/start]
 
 ### Class Diagram for GUI
 
