@@ -53,8 +53,7 @@ window.addEventListener('load', function () {
       if (this.buildingTimer > this.buildingInterval || this.gameStart) {
         if (this.gameStart) {
           this.initFetchRandData()
-        }
-        else {
+        } else {
           this.fetchRandData()
         }
         this.buildingTimer = 0
@@ -75,7 +74,7 @@ window.addEventListener('load', function () {
         .then(result => {
           console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result["randGaps"][x]))
+            this.gaps.push(Number(result['randGaps'][x]))
           }
         })
         .catch(error => {
@@ -92,14 +91,14 @@ window.addEventListener('load', function () {
             .then(data => {
               console.log('Received data:', data)
               for (let x = 0; x < 10; x++) {
-                let buildingWidth = Number(data.data[x][1])
-                let buildingHeight = Number(data.data[x][2])
+                const buildingWidth = Number(data.data[x][1])
+                const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
                 this.totalGap += buildingWidth
                 this.totalGap += this.gaps[x]
               }
               this.gaps = []
-            })      
+            })
             .catch(error => {
               console.error('Error fetching data:', error)
             })
@@ -118,7 +117,7 @@ window.addEventListener('load', function () {
         .then(result => {
           console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result["randGaps"][x]))
+            this.gaps.push(Number(result['randGaps'][x]))
           }
         })
         .catch(error => {
@@ -135,12 +134,11 @@ window.addEventListener('load', function () {
             .then(data => {
               console.log('Received data:', data)
               for (let x = 0; x < 10; x++) {
-                let buildingWidth = Number(data.data[x][1])
-                let buildingHeight = Number(data.data[x][2])
+                const buildingWidth = Number(data.data[x][1])
+                const buildingHeight = Number(data.data[x][2])
                 if (x === 0) {
                   this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, -5))
-                }
-                else {
+                } else {
                   this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
                   this.totalGap += this.gaps[x]
                 }
@@ -162,14 +160,14 @@ window.addEventListener('load', function () {
             .then(data => {
               console.log('Received data:', data)
               for (let x = 0; x < 10; x++) {
-                let buildingWidth = Number(data.data[x][1])
-                let buildingHeight = Number(data.data[x][2])
+                const buildingWidth = Number(data.data[x][1])
+                const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
                 this.totalGap += buildingWidth
                 this.totalGap += this.gaps[x]
               }
               this.gaps = []
-            })      
+            })
             .catch(error => {
               console.error('Error fetching data:', error)
             })
