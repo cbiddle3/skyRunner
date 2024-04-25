@@ -1,11 +1,10 @@
 // Copyright 2024 Sarah Fidahussain
 
-#include <iostream>
-#include <cstdlib>
 #include <node.h>
-#include <string>
+
 #include <random>
-#include <node.h>
+#include <iostream>
+#include <string>
 #include <vector>
 
 namespace randomization {
@@ -26,9 +25,6 @@ struct Building {
 
     Building(std::string n, int w, int h) : name(n), width(w), height(h) {}
 };
-
-void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
-    Isolate* isolate = args.GetIsolate();
 
 void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = args.GetIsolate();
@@ -65,12 +61,12 @@ void GetRandomBuilding(const FunctionCallbackInfo<Value>& args) {
 }
 
 void GetRandomGap(const FunctionCallbackInfo<Value>& args) {
-    Isolate* isolate = args.GetIsolate(); 
+    Isolate* isolate = args.GetIsolate();
     std::mt19937 rng(std::random_device{}());
     std::uniform_int_distribution<int> dist(90, 160);
   
     int gap = dist(rng);
-    auto rtngap = Number::New(isolate, gap); 
+    auto rtngap = Number::New(isolate, gap);
     args.GetReturnValue().Set(rtngap);
 }
 

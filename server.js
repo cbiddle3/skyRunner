@@ -23,8 +23,8 @@ app.get('/favicon.ico', (req, res) => {
 
 app.get('/api/random-building-data', (req, res) => {
   const numOfBuildings = 10
-  let randomBuildings = []
-  for (x = 0 ; x < numOfBuildings; x++) {
+  const randomBuildings = []
+  for (let x = 0; x < numOfBuildings; x++) {
     randomBuildings.push(randomization.GetRandomBuilding())
   }
   res.json({ data: randomBuildings })
@@ -32,8 +32,8 @@ app.get('/api/random-building-data', (req, res) => {
 
 app.get('/api/random-gap', (req, res) => {
   const numOfGaps = 10
-  let randGaps = []
-  for (x = 0; x < numOfGaps; x++) {
+  const randGaps = []
+  for (let x = 0; x < numOfGaps; x++) {
     randGaps.push(randomization.GetRandomGap())
   }
   res.json({ randGaps })
