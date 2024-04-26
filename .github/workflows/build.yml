@@ -24,5 +24,10 @@ jobs:
 
     - name: Build Server
       run: |
-        node server.js
-        ^C
+        node server.js &
+        sleep 10 &&
+        curl http://localhost:3001/start > server.txt
+
+    - name: Server returned start HTML
+      run: |
+        diff server.txt public/startPage.html
