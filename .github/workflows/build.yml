@@ -25,5 +25,15 @@ jobs:
     - name: Build Server
       run: node server.js
 
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: server-output
+        path: output.txt
+
     - name: Close Server
       run: ^C
+   
+
+
+    
