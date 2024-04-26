@@ -12,7 +12,7 @@ app.use(cors({
 }))
 
 const publicPath = path.join(__dirname, 'public')
-
+muahahahahhahahahahhahah
 app.get('/start', (req, res) => {
   res.sendFile(path.join(publicPath, 'startPage.html'))
 })
