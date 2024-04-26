@@ -23,7 +23,6 @@ jobs:
       run: node-gyp configure build
 
     - name: Build Server
-      run: node server.js
-
-    - name: Close Server
-      run: ^C
+      run: |
+        node server.js
+        ^C
