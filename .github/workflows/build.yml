@@ -31,6 +31,7 @@ jobs:
         name: server-output
         path: output.txt
 
+
     - name: Close Server
       run: ^C
    
