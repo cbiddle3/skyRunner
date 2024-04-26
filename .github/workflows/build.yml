@@ -24,3 +24,6 @@ jobs:
 
     - name: Build Server
       run: node server.js
+
+    - name: Close Server
+      run: ^C
