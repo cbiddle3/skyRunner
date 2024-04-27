@@ -39,5 +39,8 @@ jobs:
 
     - name: Download Artifacts
       uses: actions/download-artifact@v4
+      with:
+        name: server-output
+        path: output.txt
     - name: Display structure of downloaded files
       run: ls -R
