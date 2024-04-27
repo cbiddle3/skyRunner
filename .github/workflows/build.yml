@@ -45,7 +45,7 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R
 
-    - name: Commit recompiled binaries
+    - name: Commit Artifacts
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
