@@ -23,17 +23,16 @@ jobs:
       run: node-gyp configure build
 
     - name: Build Server
-      run: node server.js
+      run: |
+        node server.js &
+        sleep 10 &&
+        curl http://localhost:3001/start > output.txt
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: server-output
         path: output.txt
-
-
-    - name: Close Server
-      run: ^C
    
 
 
