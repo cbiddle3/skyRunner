@@ -44,3 +44,15 @@ jobs:
         path: skyRunner/output.txt
     - name: Display structure of downloaded files
       run: ls -R
+
+    - name: Commit recompiled binaries
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add skyRunner
+        git commit -m "Upload Build Artifacts"
+    - name: Push recompiled binaries
+      uses: ad-m/github-push-action@v0.8.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
