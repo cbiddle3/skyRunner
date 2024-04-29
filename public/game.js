@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
         .then(result => {
           console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result.randGaps[x]))
+            this.gaps.push(Number(result.randGaps[x]) +35) //modified here 
           }
         })
         .catch(error => {
@@ -95,7 +95,7 @@ window.addEventListener('load', function () {
                 const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
                 this.totalGap += buildingWidth
-                this.totalGap += this.gaps[x]
+                this.totalGap += this.gaps[x] +35 //modfied here 
               }
               this.gaps = []
             })
@@ -117,7 +117,7 @@ window.addEventListener('load', function () {
         .then(result => {
           console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result.randGaps[x]))
+            this.gaps.push(Number(result.randGaps[x]) +35 ) //modified here w gaps
           }
         })
         .catch(error => {
@@ -140,7 +140,7 @@ window.addEventListener('load', function () {
                   this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, -5))
                 } else {
                   this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
-                  this.totalGap += this.gaps[x]
+                  this.totalGap += this.gaps[x] +35 //modified gaps here 
                 }
                 this.totalGap += buildingWidth
               }
@@ -164,7 +164,7 @@ window.addEventListener('load', function () {
                 const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
                 this.totalGap += buildingWidth
-                this.totalGap += this.gaps[x]
+                this.totalGap += this.gaps[x] +35 //modified here too 
               }
               this.gaps = []
             })

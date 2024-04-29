@@ -6,9 +6,9 @@ export class Character {
     this.jumping = false
     this.currentBuildingHeight = 0
     this.image = document.getElementById('old-man')
-    this.width = 75
+    this.width = 65 //this was 75 i changed it 
     this.vy = 0
-    this.height = 100
+    this.height = 110 //this was 100 i changed it 
     this.x = 5
     this.y = this.game.height - this.height - this.game.groundMargin
     this.weight = 2
@@ -25,6 +25,11 @@ export class Character {
     } else {
       this.vy = 0
       this.jumping = false
+    }
+
+    // character dies when they fall through the gaps, check if this.y>=??
+    if (!this.onBuilding && this.y > this.game.height - this.height) {
+      this.game.endGame()
     }
   }
 
@@ -49,20 +54,24 @@ export class Character {
     return (this.y >= this.game.height - this.height - this.game.groundMargin || this.y >= this.game.height - this.height - this.currentBuildingHeight)
   }
 
+  //reworked a lot of this, kept the integrity of it tho
   checkCollision () {
+    this.onBuilding = false
+    this.currentBuildingHeight = 0
     this.game.buildings.forEach(building => {
-      if (building.x < this.x + this.width &&
-                building.x + building.width > this.x) {
-        this.currentBuildingHeight = building.height
-        if (!this.jumping) {
-          this.y = this.game.height - this.height - building.height
+        if (building.x < this.x + this.width &&
+            building.x + building.width > this.x &&
+            this.y + this.height >= this.game.height - building.height) {
+            this.currentBuildingHeight = building.height
+            if (!this.jumping) {
+                this.y = this.game.height - this.height - building.height
+            }
+            this.onBuilding = true
+            if (!building.alreadyVisited) {
+                this.game.score += 1
+            }
+            building.alreadyVisited = true
         }
-        this.onBuilding = true
-        if (!building.alreadyVisited) {
-          this.game.score += 1
-        }
-        building.alreadyVisited = true
-      }
     })
   }
 }
