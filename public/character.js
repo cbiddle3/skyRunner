@@ -31,9 +31,9 @@ export class Character {
     }
 
     // character dies when they fall through the gaps, check if this.y>=??
-    /*if (!this.onBuilding && this.y > this.game.height - this.height) {
+    if (!this.onBuilding && this.y > this.game.height - this.height) {
       this.game.endGame()
-    }*/
+    }
   }
 
   handleInput (input) {
@@ -58,7 +58,7 @@ export class Character {
   }
 
   //reworked a lot of this, kept the integrity of it tho
-  /*checkCollision () {
+  checkCollision () {
     this.onBuilding = false
     this.currentBuildingHeight = 0
     this.game.buildings.forEach(building => {
@@ -76,29 +76,4 @@ export class Character {
             building.alreadyVisited = true
         }
     })
-  }*/
-  checkCollision () {
-    this.onBuilding = false
-    this.currentBuildingHeight = 0
-    this.game.buildings.forEach((building, index) => {
-        if (building.x < this.x + this.width &&
-            building.x + building.width > this.x) {
-            this.currentBuildingHeight = building.height
-            if (!this.jumping) {
-              this.y = this.game.height - this.height - building.height
-            }
-            this.onBuilding = true
-            this.currentBuildingIndex = index
-            this.nextBuildingIndex = index + 1
-            if (!building.alreadyVisited) {
-                this.game.score += 1
-            }
-            building.alreadyVisited = true
-        } else if (this.nextBuildingIndex === index) {
-            this.nextBuildingHeight = building.height
-        }
-    })
-    if (!this.onBuilding && this.y < this.game.height - this.height - this.nextBuildingHeight && !this.jumping) {
-      this.game.endGame()
-    }
-}}
+  }}
