@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
         .then(result => {
           console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result.randGaps[x]) + 20) //modified here 
+            this.gaps.push(Number(result.randGaps[x]) + 10)
           }
         })
         .catch(error => {
@@ -95,7 +95,7 @@ window.addEventListener('load', function () {
                 const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
                 this.totalGap += buildingWidth
-                this.totalGap += this.gaps[x] + 20 //modfied here 
+                this.totalGap += this.gaps[x] + 10
               }
               this.gaps = []
             })
@@ -117,7 +117,7 @@ window.addEventListener('load', function () {
         .then(result => {
           console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result.randGaps[x]) + 20) //modified here w gaps
+            this.gaps.push(Number(result.randGaps[x]) + 10)
           }
         })
         .catch(error => {
@@ -137,10 +137,10 @@ window.addEventListener('load', function () {
                 const buildingWidth = Number(data.data[x][1])
                 const buildingHeight = Number(data.data[x][2])
                 if (x === 0) {
-                  this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, 0))
+                  this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, 5))
                 } else {
                   this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
-                  this.totalGap += this.gaps[x] + 20 //modified gaps here 
+                  this.totalGap += this.gaps[x] + 10
                 }
                 this.totalGap += buildingWidth
               }
@@ -164,7 +164,7 @@ window.addEventListener('load', function () {
                 const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
                 this.totalGap += buildingWidth
-                this.totalGap += this.gaps[x] + 20 //modified here too 
+                this.totalGap += this.gaps[x] + 10
               }
               this.gaps = []
             })

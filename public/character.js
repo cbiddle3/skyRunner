@@ -3,19 +3,20 @@ import { Dust } from './dust.js'
 export class Character {
   constructor (game) {
     this.game = game
+    this.died = false
     this.jumping = false
     this.currentBuildingHeight = 0
     this.image = document.getElementById('old-man')
-    this.width = 32 //this was 75 i changed it 
+    this.width = 32 
     this.vy = 0
-    this.height = 57 //this was 100 i changed it 
+    this.height = 57 
     this.x = 5
     this.y = this.game.height - this.height - this.game.groundMargin
     this.weight = 2
     this.onBuilding = false
-    this.currentBuildingIndex = 0
     this.nextBuildingIndex = 1
     this.nextBuildingHeight = 0
+    this.start = true
   }
 
   update (input) {
@@ -29,9 +30,10 @@ export class Character {
       this.vy = 0
       this.jumping = false
     }
-
-    // character dies when they fall through the gaps, check if this.y>=??
-    if (!this.onBuilding && this.y > this.game.height - this.height) {
+    // character dies when they fall through the gaps
+    if (!this.onBuilding && this.y > this.game.height - this.nextBuildingHeight && !this.jumping) {
+      this.y = -this.game.height
+      this.died = true
       this.game.endGame()
     }
   }
@@ -54,17 +56,20 @@ export class Character {
   }
 
   onGround () {
-    return (this.y >= this.game.height - this.height - this.game.groundMargin || this.y >= this.game.height - this.height - this.currentBuildingHeight)
+    return (this.y >= this.game.height - this.height - this.currentBuildingHeight)
   }
 
-  //reworked a lot of this, kept the integrity of it tho
   checkCollision () {
     this.onBuilding = false
     this.currentBuildingHeight = 0
-    this.game.buildings.forEach(building => {
+    this.game.buildings.forEach((building, index) => {
+      /*checks that the characters x position is located on the building,
+      that the character is not dead, and that the feet of the character are at least
+      the height of the building it's positioned on*/
         if (building.x < this.x + this.width &&
-            building.x + building.width > this.x &&
-            this.y + this.height >= this.game.height - building.height) {
+            building.x + building.width > this.x + (this.width/9) && // width/9 gives slight leeway for when jump
+            this.y >= this.game.height - building.height - this.height &&
+            !this.died) {
             this.currentBuildingHeight = building.height
             if (!this.jumping) {
                 this.y = this.game.height - this.height - building.height
@@ -74,6 +79,9 @@ export class Character {
                 this.game.score += 1
             }
             building.alreadyVisited = true
+            this.nextBuildingHeight = index + 1
+        } else if (index === this.nextBuildingIndex) {
+          this.nextBuildingHeight = building.height
         }
     })
   }}
