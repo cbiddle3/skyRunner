@@ -1,6 +1,6 @@
 # skyRunner platform game
 
-Brief Description: You are a character that is running on top of buildings in the city. The object of the game is to get as far as you can while jumping over the cracks/spaces between the buildings. In order to jump you must press the space key. If you fall in the crack of the buildings the game is over and displays your achieved distance.
+Brief Description: You are a character that is running on top of buildings in the city. The object of the game is to get as far as you can while jumping over the cracks/spaces between the buildings. In order to jump you must press the enter key. If you fall in the crack of the buildings the game is over and displays your score, which is based on how many buildings you hit.
 
 ## How to run the code
 1) Make sure you have npm installed
