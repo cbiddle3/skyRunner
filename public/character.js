@@ -6,9 +6,9 @@ export class Character {
     this.jumping = false
     this.currentBuildingHeight = 0
     this.image = document.getElementById('old-man')
-    this.width = 65 //this was 75 i changed it 
+    this.width = 55 //this was 75 i changed it 
     this.vy = 0
-    this.height = 110 //this was 100 i changed it 
+    this.height = 90 //this was 100 i changed it 
     this.x = 5
     this.y = this.game.height - this.height - this.game.groundMargin
     this.weight = 2
