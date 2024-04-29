@@ -5,15 +5,15 @@
   background-color: black;
 }
 
-.game-title {
+.logo,
+.endLogo {
   position: absolute;
-  top: 60px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  color: gold;
-  font-size: 60px;
   text-align: center;
   z-index: 1;
+  background-color: transparent;
 }
 
 .start-page {
@@ -50,7 +50,7 @@
   font-size: 30px;
   font-family: "Courier New", Courier, monospace;
   color: white;
-  background-color: lightcoral;
+  background-color: #f07f7f;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -64,10 +64,14 @@
 
 .end-page {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 234px;
   color: white;
   font-size: 40px;
   font-family: "Courier New", Courier, monospace;
+}
+
+.skull {
+  background-color: transparent;
 }
 
 #canvas1 {
