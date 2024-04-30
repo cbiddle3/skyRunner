@@ -1,15 +1,17 @@
 export class ScoreBoard {
   constructor (game) {
     this.game = game
-    this.fontSize = 30
+    this.fontSize = 45
     this.fontFamily = 'Helvetica'
+    this.scoreText = document.getElementById('game-score')
   }
 
   draw (context) {
     context.font = this.fontSize + 'px ' + this.fontFamily
     context.textAlign = 'left'
     context.fillStyle = this.game.fontColor
-    context.fillText('Score: ' + this.game.score, 20, 50)
+    context.drawImage(this.scoreText, 10, 10, 300, 100)
+    context.fillText(this.game.score, 290, 75)
   }
 
   updateScore (score) {

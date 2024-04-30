@@ -23,7 +23,7 @@ window.addEventListener('load', function () {
       this.character = new Character(this)
       this.input = new InputHandler(this)
       this.scoreBoard = new ScoreBoard(this)
-      this.fontColor = 'black'
+      this.fontColor = 'white'
       this.buildings = []
       this.buildingTimer = 0
       this.buildingInterval = 7000
@@ -63,115 +63,81 @@ window.addEventListener('load', function () {
       this.gameStart = false
     }
 
-    async fetchRandData () {
+    async initFetchRandData () {
       fetch('http://localhost:3001/api/random-gap')
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok')
-          }
           return response.json()
         })
         .then(result => {
-          console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result.randGaps[x]))
+            this.gaps.push(Number(result.randGaps[x]) + 10)
           }
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error)
         })
         .then(() => {
           fetch('http://localhost:3001/api/random-building-data')
             .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok')
-              }
               return response.json()
             })
             .then(data => {
-              console.log('Received data:', data)
+              for (let x = 0; x < 10; x++) {
+                let buildingWidth = Number(data.data[x][1])
+                const buildingHeight = Number(data.data[x][2])
+                if (x === 0) {
+                  buildingWidth = 200
+                  this.buildings.push(new Building(this, 'soda-shop', 200, 90, 0))
+                } else {
+                  this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
+                  this.totalGap += this.gaps[x] + 10
+                }
+                this.totalGap += buildingWidth
+              }
+            })
+        })
+        .then(() => {
+          fetch('http://localhost:3001/api/random-building-data')
+            .then(response => {
+              return response.json()
+            })
+            .then(data => {
               for (let x = 0; x < 10; x++) {
                 const buildingWidth = Number(data.data[x][1])
                 const buildingHeight = Number(data.data[x][2])
                 this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
                 this.totalGap += buildingWidth
-                this.totalGap += this.gaps[x]
+                this.totalGap += this.gaps[x] + 10
               }
               this.gaps = []
             })
-            .catch(error => {
-              console.error('Error fetching data:', error)
-            })
         })
-      this.totalGap -= (this.width * 1.95)
     }
 
-    async initFetchRandData () {
+    async fetchRandData () {
       fetch('http://localhost:3001/api/random-gap')
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok')
-          }
           return response.json()
         })
         .then(result => {
-          console.log('Received data:', result)
           for (let x = 0; x < 10; x++) {
-            this.gaps.push(Number(result.randGaps[x]))
+            this.gaps.push(Number(result.randGaps[x]) + 10)
           }
         })
-        .catch(error => {
-          console.error('Error fetching data:', error)
-        })
         .then(() => {
           fetch('http://localhost:3001/api/random-building-data')
             .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok')
-              }
               return response.json()
             })
             .then(data => {
-              console.log('Received data:', data)
               for (let x = 0; x < 10; x++) {
                 const buildingWidth = Number(data.data[x][1])
                 const buildingHeight = Number(data.data[x][2])
-                if (x === 0) {
-                  this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, -5))
-                } else {
-                  this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
-                  this.totalGap += this.gaps[x]
-                }
+                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
                 this.totalGap += buildingWidth
-              }
-            })   
-            .catch(error => {
-              console.error('Error fetching data:', error)
-            })
-        })
-        .then(() => {
-          fetch('http://localhost:3001/api/random-building-data')
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok')
-              }
-              return response.json()
-            })
-            .then(data => {
-              console.log('Received data:', data)
-              for (let x = 0; x < 10; x++) {
-                const buildingWidth = Number(data.data[x][1])
-                const buildingHeight = Number(data.data[x][2])
-                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
-                this.totalGap += buildingWidth
-                this.totalGap += this.gaps[x]
+                this.totalGap += this.gaps[x] + 10
               }
               this.gaps = []
             })
-            .catch(error => {
-              console.error('Error fetching data:', error)
-            })
         })
+      this.totalGap -= (this.width * 1.95)
     }
 
     draw (ctx) {
