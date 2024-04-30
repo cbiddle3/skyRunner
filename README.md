@@ -59,7 +59,9 @@ graph
 
    F-->D
    G[Display End Screen and Character Score]
+   H[User Selects Restart]
    D-- Yes --> G
+   G--> H --> A
 ```
 
 This shows how the user actions and game logic will fundamentally interact. The user clicks start on the title page and then the game continues until the user dies. The game updates with randomized buildings and gap distances between buildings.
