@@ -79,9 +79,9 @@ export class Character {
         }
         building.alreadyVisited = true
         this.nextBuildingHeight = index + 1
-        } else if (index === this.nextBuildingIndex) {
-          this.nextBuildingHeight = building.height
-        }
-      })
+      } else if (index === this.nextBuildingIndex) {
+        this.nextBuildingHeight = building.height
+      }
+    })
   }
 }
