@@ -12,34 +12,34 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install Dependencies
-      run: |
-        npm install
-        npm install -g node-gyp
+      - name: Install Dependencies
+        run: |
+          npm install
+          npm install -g node-gyp
         
-    - name: Compile JS Addon
-      run: node-gyp configure build
+      - name: Compile JS Addon
+        run: node-gyp configure build
 
-    - name: Build Server
-      run: |
-        node server.js &
-        sleep 10 &&
-        curl http://localhost:3001/start > output.txt
+      - name: Build Server
+        run: |
+          node server.js &
+          sleep 10 &&
+          curl http://localhost:3001/start > output.txt
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: server-output
-        path: output.txt
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: server-output
+          path: output.txt
 
-    - name: Download Artifacts
-      uses: actions/download-artifact@v3
-      with:
-        name: server-output
-        path: skyRunner/output.txt
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: server-output
+          path: skyRunner/output.txt

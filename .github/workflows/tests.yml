@@ -12,24 +12,24 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: |
-        npm install
-    - name: Run Tests
-      run: |
-        npm test > results.txt
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: randomization-testing
-        path: result.txt
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: Run Tests
+        run: |
+          npm test > results.txt
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: randomization-testing
+          path: skyRunner/result.txt
 
-    - name: Download Artifacts
-      uses: actions/download-artifact@v3
-      with:
-        name: randomization-testing
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: randomization-testing
