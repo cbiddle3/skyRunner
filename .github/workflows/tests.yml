@@ -21,15 +21,4 @@ jobs:
         run: |
           npm install
       - name: Run Tests
-        run: |
-          npm test > results.txt
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: randomization-testing
-          path: skyRunner/result.txt
-
-      - name: Download Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: randomization-testing
+        run: npm test
