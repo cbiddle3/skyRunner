@@ -102,7 +102,7 @@ window.addEventListener('load', function () {
               for (let x = 0; x < 10; x++) {
                 const buildingWidth = Number(data.data[x][1])
                 const buildingHeight = Number(data.data[x][2])
-                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x]+this.totalGap))
+                this.buildings.push(new Building(this, data.data[x][0], buildingWidth, buildingHeight, this.gaps[x] + this.totalGap))
                 this.totalGap += buildingWidth
                 this.totalGap += this.gaps[x] + 10
               }

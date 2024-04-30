@@ -7,9 +7,9 @@ export class Character {
     this.jumping = false
     this.currentBuildingHeight = 0
     this.image = document.getElementById('old-man')
-    this.width = 32 
+    this.width = 32
     this.vy = 0
-    this.height = 57 
+    this.height = 57
     this.x = 5
     this.y = this.game.height - this.height - this.game.groundMargin
     this.weight = 2
@@ -62,25 +62,25 @@ export class Character {
     this.onBuilding = false
     this.currentBuildingHeight = 0
     this.game.buildings.forEach((building, index) => {
-      /*checks that the characters x position is located on the building,
+      /*  checks that the characters x position is located on the building,
       that the character is not dead, and that the feet of the character are at least
-      the height of the building it's positioned on*/
-        if (building.x < this.x + this.width &&
-            building.x + building.width > this.x + (this.width/9) && // width/9 gives slight leeway for when jump
-            this.y >= this.game.height - building.height - this.height &&
-            !this.died) {
-            this.currentBuildingHeight = building.height
-            if (!this.jumping) {
-                this.y = this.game.height - this.height - building.height
-            }
-            this.onBuilding = true
-            if (!building.alreadyVisited) {
-                this.game.score += 1
-            }
-            building.alreadyVisited = true
-            this.nextBuildingHeight = index + 1
-        } else if (index === this.nextBuildingIndex) {
-          this.nextBuildingHeight = building.height
-        }
+      the height of the building it's positioned on */
+      if (building.x < this.x + this.width &&
+        building.x + building.width > this.x + (this.width/9) && // width / 9 gives slight leeway for when jump
+        this.y >= this.game.height - building.height - this.height &&
+        !this.died) {
+      this.currentBuildingHeight = building.height
+      if (!this.jumping) {
+        this.y = this.game.height - this.height - building.height
+      }
+        this.onBuilding = true
+      if (!building.alreadyVisited) {
+        this.game.score += 1
+      }
+      building.alreadyVisited = true
+      this.nextBuildingHeight = index + 1
+      } else if (index === this.nextBuildingIndex) {
+        this.nextBuildingHeight = building.height
+      }
     })
   }}
