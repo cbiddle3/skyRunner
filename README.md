@@ -15,25 +15,54 @@ Brief Description: You are a character that is running on top of buildings in th
 
 ```mermaid
 classDiagram
+
+    class StartPage {
+        <<HTML>>
+    }
+    class Index {
+        <<HTML>>
+    }
+    class EndPage {
+        <<HTML>>
+    }
     class Game {
         <<interface>>
-        StartGame()
+        draw()
+        update()
     }
     
-    class TitleScreen {
-    }
-    
-    class PlayingScreen {
-        +Background
-        +Character
-        +Building
+    class Character {
+      draw()
+      update()
+      checkCollisions()
     }
 
-    class EndScreen {
+    class ScoreBoard {
+   
     }
-    Game --> TitleScreen
-    Game --> PlayingScreen
-    Game --> EndScreen
+
+    class Background {
+      draw()
+      update()
+    }
+
+    class Building {
+      draw()
+      update()
+    }
+    
+
+    Index --> Game
+    Game --> ScoreBoard
+    Game --> Character
+    Game --> Background
+    Game --> Building
+    Game --> Inputhandler
+    EndPage "has a" --> StartPage
+    StartPage "has a" --> Index
+    Index "has a" --> EndPage
+ 
+    
 ```
 
 This gives an overall view of the different components and how they will be organized for the game interface. There is a top level game container that has the three different screen displays depending on the state of the game (title, game, end screen).
