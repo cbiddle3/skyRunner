@@ -48,7 +48,6 @@ export class Character {
   }
 
   draw (context) {
-    if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height)
     context.drawImage(this.image, this.x, this.y, this.width, this.height)
     if (!this.jumping) {
       this.game.particles.push(new Dust(this.game, this.x + this.width * 0.5, this.y + this.height))

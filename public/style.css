@@ -6,9 +6,19 @@
 }
 
 .logo,
-.endLogo {
+.end-logo {
   position: absolute;
   top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.instructions {
+  position: absolute;
+  top: 35%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -64,7 +74,6 @@
 
 .end-page {
   text-align: center;
-  margin-top: 234px;
   color: white;
   font-size: 40px;
   font-family: "Courier New", Courier, monospace;
@@ -90,6 +99,7 @@
 #green-building,
 #cafe,
 #soda-shop,
-#sushi-building {
+#sushi-building,
+#game-score {
   display: none;
 }
